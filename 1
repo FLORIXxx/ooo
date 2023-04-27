@@ -1,0 +1,53 @@
+Используйте более описательные имена переменных: Вместо n рассмотрите использование имен переменных, описывающих цель переменной, например numberOfItems или size.
+Добавьте обработку ошибок: При парсинге пользовательского ввода рассмотрите добавление обработки ошибок для плавного обработки случаев, когда ввод не соответствует ожидаемому формату. Вы можете использовать int.TryParse (), чтобы проверить, является ли ввод допустимым целым числом, и предоставить соответствующую обратную связь пользователю.
+Рассмотрите использование методов: Вместо того, чтобы иметь весь код в методе Two (), рассмотрите разбиение его на более мелкие, более управляемые методы, каждый из которых выполняет определенную задачу. Это может сделать код более читабельным и поддерживаемым.
+Добавьте комментарии: Рассмотрите добавление комментариев, чтобы объяснить, что делает код, особенно для более сложных секций.
+
+using System;
+using System.Linq;
+
+namespace Library
+{
+    public class ZadanieOne
+    {
+        public void PrintNumbers()
+        {
+            Console.Write("Enter the number of items: ");
+            int numberOfItems;
+            while (!int.TryParse(Console.ReadLine(), out numberOfItems)  numberOfItems < 1)
+            {
+                Console.WriteLine("Invalid input. Please enter a positive integer.");
+            }
+            string result = string.Join(", ", Enumerable.Range(1, numberOfItems));
+            Console.WriteLine(result);
+        }
+    }
+
+    public class ZadanieTwo
+    {
+        public static void DrawPattern()
+        {
+            Console.Write("Enter an odd number N: ");
+            int size;
+            while (!int.TryParse(Console.ReadLine(), out size)  size % 2 == 0)
+            {
+                Console.WriteLine("Invalid input. Please enter an odd integer.");
+            }
+            for (int row = 1; row <= size; row++)
+            {
+                for (int col = 1; col <= size; col++)
+                {
+                    if (row == size / 2 + 1 && col == size / 2 + 1) 
+                    {
+                        Console.Write(" ");
+                    }
+                    else 
+                    {
+                        Console.Write("#");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
